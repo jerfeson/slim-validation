@@ -1,0 +1,55 @@
+{
+    "name": "jerfeson/slim-validation",
+    "description": "A simple validator library for SLIM micro framework, using Respect Validation",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jerfeson Guerreiro",
+            "email": "jerfeson_guerreiro@hotmail.com",
+            "homepage": "https://codeis.com.br"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "jerfeson\\Validation\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "jerfeson\\Validation\\Test\\": "tests/"
+        }
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^7.1",
+        "respect/validation": "2.0.10",
+        "psr/http-message": "^1.0",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "slim/slim": "^4.5",
+        "slim/psr7": "1.0.*",
+        "phpunit/phpunit": "^9.2.5",
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "squizlabs/php_codesniffer": "^3.4",
+        "phpstan/phpstan": "0.*",
+        "overtrue/phplint": "^1.1"
+    },
+    "scripts": {
+        "build:check": [
+            "@lint",
+            "@cs:check",
+            "@sniffer:check",
+            "@test:coverage"
+        ],
+        "lint": "phplint ./ --exclude=vendor --no-interaction --no-cache",
+        "cs:check": "php-cs-fixer fix --dry-run --format=txt --verbose --diff --diff-format=udiff --config=.cs.php",
+        "cs:fix": "php-cs-fixer fix --config=.cs.php",
+        "sniffer:check": "phpcs --standard=phpcs.xml",
+        "sniffer:fix": "phpcbf --standard=phpcs.xml",
+        "phpstan": "phpstan analyse tests --level=max -c phpstan.neon --no-progress --ansi",
+        "test:coverage": "php vendor/bin/phpunit --configuration phpunit.xml --coverage-xml tests/output --coverage-html tests/output",
+        "test": "php vendor/bin/phpunit --configuration phpunit.xml"
+    }
+}
