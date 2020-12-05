@@ -13,5 +13,7 @@ A simple validator library for SLIM micro framework, using Respect Validation
 composer require jerfeson/slim-validation
 ```
 
-## Usage
+## Issues
+
+- [ ] friendsofphp/php-cs-fixer is not yet compatible with php8.0
 
